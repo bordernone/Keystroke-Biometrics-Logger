@@ -3,22 +3,16 @@ const resetBtn = document.getElementById("reset-btn");
 const saveBtn = document.getElementById("save-btn");
 const codeInput = document.getElementById("code-input");
 
-const fetchUUID = () => {
-    return fetch("https://www.uuidtools.com/api/generate/v1").then(function (
-        response
-    ) {
-        return response.json();
-    });
-};
+chrome.storage.local.get(["sessionKey"], async function (result) {
+    if (result.sessionKey) {
+        codeInput.innerHTML = result.sessionKey;
+    } else {
+        codeInput.innerHTML = await createNewSession();
+    }
+});
 
-resetBtn.addEventListener("click", () => {
-    fetchUUID().then((uuid) => {
-        chrome.storage.local.clear();
-        chrome.storage.local.set({ sessionKey: uuid[0] }, function () {
-            console.log("New session generated and saved.");
-            codeInput.innerHTML = uuid[0];
-        });
-    });
+resetBtn.addEventListener("click", async () => {
+    codeInput.innerHTML = await createNewSession();
 });
 
 copyBtn.addEventListener("click", () => {

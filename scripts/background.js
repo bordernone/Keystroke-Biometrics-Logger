@@ -1,3 +1,9 @@
+importScripts("shared.js");
+
+chrome.runtime.onInstalled.addListener(async () => {
+    await createNewSession();
+});
+
 // Listen for messages from the content script
 let keystrokes = [];
 chrome.runtime.onMessage.addListener(function (msg, sender, response) {
@@ -12,8 +18,6 @@ const handleRecordEvent = (msg) => {
             data: [],
         };
         keystrokeData.data.push(msg.data);
-        chrome.storage.local.set({ keystrokeData: keystrokeData }, function () {
-            console.log("Keystroke data updated.");
-        });
+        await chrome.storage.local.set({ keystrokeData: keystrokeData });
     });
 };
