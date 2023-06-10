@@ -9,7 +9,7 @@
 	"permissions": ["activeTab", "scripting", "storage", "unlimitedStorage"],
 	"content_scripts": [
 		{
-			"matches": ["https://www.google.com/*"],
+			"matches": ["*://*/*"],
 			"js": ["scripts/content.js"]
 		}
 	],
