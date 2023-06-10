@@ -4,7 +4,7 @@
     "description": "Logs the keystroke data of the user",
     "version": "1.0",
 	"background": {
-		"service_worker": "background.js"
+		"service_worker": "scripts/background.js"
 	},
 	"permissions": ["activeTab", "scripting", "storage", "unlimitedStorage"],
 	"content_scripts": [
