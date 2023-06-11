@@ -13,3 +13,21 @@ const createNewSession = async () => {
     console.log("New Session Created");
     return uuid;
 };
+
+const convertToCSV = (objArray) => {
+    let data = objArray.data;
+    let label = objArray.label;
+    let csv = label.join(",") + "\n";
+    data.forEach(function (row) {
+        csv += row.join(",");
+        csv += "\n";
+    });
+    return csv;
+};
+
+const getSessionKey = async () => {
+    let sessionKey = await chrome.storage.local.get(["sessionKey"]);
+    return sessionKey.sessionKey;
+}
+
+const DATA_LABELS = ["type", "key", "timestamp", "elementID", "elementName"];

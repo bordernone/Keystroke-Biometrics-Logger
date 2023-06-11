@@ -23,12 +23,13 @@ copyBtn.addEventListener("click", () => {
 
 saveBtn.addEventListener("click", async () => {
     let data = await chrome.storage.local.get(["keystrokeData"]);
-
-    let dataStr =
-        "data:text/json;charset=utf-8," +
-        encodeURIComponent(JSON.stringify(data));
+    let csv = convertToCSV(data.keystrokeData);
+    let dataStr = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
     let dlAnchorElem = document.getElementById("download-btn");
     dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", `keystroke-data-${Date.now()}.json`);
+    dlAnchorElem.setAttribute(
+        "download",
+        `${await getSessionKey()}-${Date.now()}.csv`
+    );
     dlAnchorElem.click();
 });

@@ -15,6 +15,7 @@ chrome.runtime.onMessage.addListener(function (msg, sender, response) {
 const handleRecordEvent = (msg) => {
     chrome.storage.local.get(["keystrokeData"], async function (result) {
         let keystrokeData = result.keystrokeData ?? {
+            label: DATA_LABELS,
             data: [],
         };
         keystrokeData.data.push(msg.data);
