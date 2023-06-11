@@ -30,4 +30,4 @@ const getSessionKey = async () => {
     return sessionKey.sessionKey;
 }
 
-const DATA_LABELS = ["type", "key", "timestamp", "elementID", "elementName"];
+const DATA_LABELS = ["type", "key", "timestamp", "hostname", "elementID", "elementName"];

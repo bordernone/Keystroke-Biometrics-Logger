@@ -18,7 +18,14 @@ document.addEventListener("keydown", function (event) {
 
             lastKeyDown[key] = timestamp;
 
-            let data = ["keydown", key, timestamp, inputElement.id, inputElement.name]
+            let data = [
+                "keydown",
+                key,
+                timestamp,
+                window.location.host,
+                inputElement.id,
+                inputElement.name,
+            ];
 
             // Send message to background.js
             chrome.runtime.sendMessage({
@@ -44,7 +51,14 @@ document.addEventListener("keyup", function (event) {
 
             lastKeyDown[key] = null;
 
-            let data = ["keyup", key, timestamp, inputElement.id, inputElement.name]
+            let data = [
+                "keyup",
+                key,
+                timestamp,
+                window.location.host,
+                inputElement.id,
+                inputElement.name,
+            ];
 
             // Send message to background.js
             chrome.runtime.sendMessage({
