@@ -1,14 +1,12 @@
 {
 	"manifest_version": 3,
 	"name": "Keystroke Biometrics Logger",
-	"description": "Keystroke Biometrics Logger is a Chrome extension designed to assist researchers in the field of keystroke biometrics. It simplifies the process of collecting keystroke data during web browsing, allowing researchers to focus on data analysis and interpretation. Start a new session with a single click, and the extension will silently record keystroke data as users browse the web. The collected data is stored securely and can be easily downloaded in CSV format using the provided download button. Please note that the Keystroke Biometrics Logger strictly adheres to user privacy and research ethics. It does not collect sensitive information or share data with third parties. This extension is intended solely for research purposes and aims to provide a convenient tool for gathering keystroke data without compromising user privacy.",
+	"description": "Keystroke Biometrics Logger is a Chrome extension designed to assist researchers collect keystoke data.",
 	"version": "1.0",
 	"background": {
 		"service_worker": "scripts/background.js"
 	},
 	"permissions": [
-		"activeTab",
-		"scripting",
 		"storage",
 		"unlimitedStorage"
 	],
